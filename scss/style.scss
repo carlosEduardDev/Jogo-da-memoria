@@ -123,9 +123,9 @@ body {
     .img {
       @include bg;
       @include mobile {
-        width: 60px;
-        height: 60px;
-        background-size: 50px;
+        width: 55px;
+        height: 55px;
+        background-size: 45px;
       }
       animation: scale 0.5s linear;
       &::after {
