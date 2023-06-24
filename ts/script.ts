@@ -113,10 +113,10 @@ function init() {
 
 initGame?.addEventListener("click", init);
 
-const resetGame = document.querySelector(".reset p");
+const resetGame = document.querySelector(".reset");
 
 function reset() {
-  resetGame?.parentElement?.remove();
+  if (resetGame instanceof HTMLElement) resetGame.style.display = "none";
   const main = document.querySelector("main");
   if (main instanceof HTMLElement) main.innerHTML = "";
   setTimeout(() => {
