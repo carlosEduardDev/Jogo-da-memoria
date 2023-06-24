@@ -123,9 +123,9 @@ body {
     .img {
       @include bg;
       @include mobile {
-        width: 55px;
-        height: 55px;
-        background-size: 45px;
+        width: 60px;
+        height: 60px;
+        background-size: 50px;
       }
       animation: scale 0.5s linear;
       &::after {
@@ -170,6 +170,9 @@ body {
       cursor: default;
       span {
         color: lighten($bg-img-color, 50%);
+      }
+      @include mobile {
+        font-size: 16px;
       }
     }
     img {
@@ -224,9 +227,9 @@ body {
   background-color: lighten($bg-img-color, 20%);
   cursor: default;
   @include mobile {
-    width: 50px;
-    height: 50px;
-    background-size: 40px;
+    width: 55px;
+    height: 55px;
+    background-size: 45px;
   }
   transform: rotateY(360deg);
 }
