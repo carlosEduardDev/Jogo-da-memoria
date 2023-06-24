@@ -110,6 +110,7 @@ body {
   height: 100vh;
   @include dg;
   margin: 0px 20px;
+  overflow: hidden;
   // main
   main {
     @include dg;
@@ -122,9 +123,9 @@ body {
     .img {
       @include bg;
       @include mobile {
-        width: 50px;
-        height: 50px;
-        background-size: 40px;
+        width: 55px;
+        height: 55px;
+        background-size: 45px;
       }
       animation: scale 0.5s linear;
       &::after {
