@@ -1,0 +1,231 @@
+* {
+  // reset
+  padding: 0;
+  margin: 0;
+  transition: 0.3s;
+  font-family: monospace, sans-serif;
+}
+
+// Cor principal
+$bg-img-color: #1b1b1b;
+
+// mixin background-image
+@mixin bg {
+  background: {
+    color: $bg-img-color;
+    position: center;
+    repeat: no-repeat;
+    size: 90px;
+  }
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  opacity: 0.8;
+  transform: rotateY(180deg);
+  filter: brightness(50%);
+}
+
+// mixin display-grid
+@mixin dg {
+  display: grid;
+  place-content: center;
+}
+
+// mixin mobile
+@mixin mobile {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+
+//mixin config. Reset e Init
+@mixin ResetInit {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  height: 100vh;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $bg-img-color;
+  flex-direction: column;
+  gap: 40px;
+  h1 {
+    font-size: 50px;
+    color: lighten($bg-img-color, 100%);
+    @include mobile {
+      font-size: 40px;
+    }
+  }
+  p {
+    border: 2px dashed lighten($bg-img-color, 100%);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font: {
+      size: 30px;
+      weight: bold;
+    }
+    color: lighten($bg-img-color, 100%);
+    &:hover {
+      border: 2px solid lighten($bg-img-color, 50%);
+      color: lighten($bg-img-color, 50%);
+    }
+    &:hover::after {
+      border-left-color: lighten($bg-img-color, 50%);
+    }
+    &::after {
+      content: "";
+      cursor: pointer;
+      display: inline-block;
+      border: 12px solid transparent;
+      border: {
+        left-color: lighten($bg-img-color, 100%);
+        radius: 3px;
+      }
+    }
+  }
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+body {
+  // body
+  background-color: lighten($bg-img-color, 20%);
+  height: 100vh;
+  @include dg;
+  margin: 0px 20px;
+  // main
+  main {
+    @include dg;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    @include mobile {
+      gap: 10px;
+    }
+    // images
+    .img {
+      @include bg;
+      @include mobile {
+        width: 50px;
+        height: 50px;
+        background-size: 40px;
+      }
+      animation: scale 0.5s linear;
+      &::after {
+        content: "";
+        display: block;
+        background-color: $bg-img-color;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        @include mobile {
+          width: 50px;
+          height: 50px;
+        }
+      }
+    }
+  }
+}
+
+// play
+.init {
+  @include ResetInit;
+}
+//reset
+.reset {
+  @include ResetInit;
+  display: none;
+  h1 {
+    margin-bottom: 30px;
+  }
+  .creditos {
+    position: fixed;
+    bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    @include mobile {
+      margin: 0px 30px;
+    }
+    .autor {
+      font-size: 20px;
+      color: lighten($bg-img-color, 100%);
+      cursor: default;
+      span {
+        color: lighten($bg-img-color, 50%);
+      }
+    }
+    img {
+      width: 100px;
+      margin-top: -25px;
+      filter: invert(100%);
+      &:hover {
+        filter: invert(80%);
+      }
+    }
+  }
+  p {
+    border: 2px dashed lighten($bg-img-color, 100%);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 5px 10px;
+    &:hover {
+      border: 2px solid lighten($bg-img-color, 50%);
+      color: lighten($bg-img-color, 50%);
+    }
+    &:hover::after {
+      border-left-color: lighten($bg-img-color, 50%);
+    }
+    &::after {
+      content: "";
+      cursor: pointer;
+      display: inline-block;
+      border: 12px solid transparent;
+      border: {
+        left-color: lighten($bg-img-color, 100%);
+        radius: 3px;
+      }
+    }
+  }
+}
+
+// active card
+.img.active {
+  transform: rotateY(360deg);
+  opacity: 1;
+  filter: brightness(100%);
+  &::after {
+    background-color: transparent;
+  }
+}
+
+// succes card
+.sucess {
+  opacity: 0.3;
+  @include bg;
+  background-color: lighten($bg-img-color, 20%);
+  cursor: default;
+  @include mobile {
+    width: 50px;
+    height: 50px;
+    background-size: 40px;
+  }
+  transform: rotateY(360deg);
+}
