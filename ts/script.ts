@@ -63,7 +63,7 @@ class ImagesEvents {
               this.secondCard = "";
               setTimeout(() => {
                 this.resetGame();
-              }, 1500);
+              }, 2000);
             } else {
               this.images.forEach((item) =>
                 item.addEventListener("click", this.setClass)
